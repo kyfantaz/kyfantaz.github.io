@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Steps To Scalability &middot; Kevin Fan</title>
+        <meta name="description" content="How do I increase the scalability of my system?
+Before we tackle that question, we must first ask: what do we mean by scalability, and how exactly are we measuring it? Are we confident that is the right metrics to care about? How do we correctly break that down into component sub-goals?
+For web-based systems, what we mean by scalability is often expressed the scale of possible usage—how many users your system can handle concurrently and correctly.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Steps To Scalability">
+<meta property="og:description" content="How do I increase the scalability of my system?
+Before we tackle that question, we must first ask: what do we mean by scalability, and how exactly are we measuring it? Are we confident that is the right metrics to care about? How do we correctly break that down into component sub-goals?
+For web-based systems, what we mean by scalability is often expressed the scale of possible usage—how many users your system can handle concurrently and correctly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyfantaz.github.io/steps-to-scalability/">
+        <link rel="stylesheet" href="https://kyfantaz.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-151561336-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                        <h1 class="site-title">
+                            <a title="Home" href="https://kyfantaz.github.io/">Home</a>
+                        </h1>
+                        
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/kyfantaz" rel="me">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/kevinfan/" rel="me">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:kfan@zagaran.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="More" href="/more/">More</a>
+    </li>
+
+                    </div>
+                    
+                </div>
+            </header>
+            <br>
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Steps To Scalability</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-11-03" itemprop="datePublished">Sun, Nov 3, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Kevin Fan</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Reading time: 9 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>How do I increase the scalability of my system?</p>
+
+<p>Before we tackle that question, we must first ask: what do we mean by scalability, and how exactly are we measuring it? Are we confident that is the right metrics to care about? How do we correctly break that down into component sub-goals?</p>
+
+<p>For web-based systems, what we mean by scalability is often expressed the scale of possible usage—how many users your system can handle concurrently and correctly. And promptly, lest we forget that every hundred milliseconds of latency can translate into a massive difference in user behavior or usage pattern (users get tired of waiting and move on). If you want to improve the scalability of your system, here is my high-level approach:</p>
+
+<ol>
+<li><strong>Begin measuring</strong>. Obtain your baseline. Measure the changes.</li>
+<li><strong>Enumerate all relevant factors</strong>. Understand what are your best levers to pull.</li>
+<li><strong>Determine an acceptable long tail</strong>. Getting to 100% is extremely expensive on the margin.</li>
+<li><strong>Find the biggest bottleneck</strong>. Get the most bang for your buck.</li>
+<li><strong>Consider both the software and hardware</strong>. Add more hardware for a small constant factor of improvement. Change your software if you need an order of magnitude improvement.</li>
+<li><strong>Do the math</strong>. Know the unit economics of how your system consumes resources.</li>
+<li><strong>Test</strong>. Simulate load and collect data, make informed estimates, and obtain confidence in your system.</li>
+<li><strong>Iterate</strong>. Iterate until satisfied.</li>
+</ol>
+
+<p>Understanding the scalability of your system is all about data collection. Once you have good data about your system’s resource usage, throughput, and ceiling limits, you will have a pretty good understanding of your system&rsquo;s scalability.</p>
+
+<h5 id="steps-for-web-based-systems">Steps For Web-based Systems</h5>
+
+<p>Since clients like to hire <a href="https://zagaran.com">my company</a> to scale web applications, here are more specifics for scaling a web-based application in particular:</p>
+
+<ol>
+<li><p><strong>Measure</strong>. If you don’t measure at all, you don’t know what you’re doing has any effect on your system’s scalability. Get your baseline, so that you can calculate to what extent each effect is. Measure system response time, as the faster your system response time, the more people you can serve in parallel. Measure memory and other resource pressure with increased usage. Measure each individual system component you will be optimizing along the way. Measuring will inform your decision on what next to optimize, be it lowering memory consumption or reducing demand on the database or network. Keep in mind that <a href="https://docs.djangoproject.com/en/dev/topics/performance/#general-approaches">&ldquo;improvements in one area will often bring about improved performance in another, but not always; sometimes one can even be at the expense of another&rdquo;</a>.</p></li>
+
+<li><p><strong>Enumerate all relevant factors</strong>. While it may be most helpful to measure what is within your control, recall there are often several factors both upstream and downstream that can have a big influence over your metrics (e.g. ISPs, caching, user&rsquo;s choice of device). By systematically going through the list of factors both inside and outside of your control, you avail yourself to all your options and you increase your chances of catching something you might have previously missed. Are you sending extra Javascript or CSS over the network that you don’t actually need? Are you serving your static assets yourself instead of offloading them to a CDN? Are you caching the most effectively? Is your data center located needlessly far from your users? As you enumerate, think of how much contributing force each factor has on the metric you care about.</p></li>
+
+<li><p><strong>Determine an acceptable long tail</strong>. Understanding that response times will fall on some non-uniform distribution is part of a mature mindset to improve scalability. If the 99th percentile of system requests meet an ideal standard, but a small long tail of requests do not, is that acceptable? Since solving the long tail is typically much harder and sometimes several factor times more costly than solving the initial easy cases, incurring the cost to squeeze the last 0.1% of requests to fall into the ideal bucket will very likely not be cost-effective. Define the minimal bar for your system’s success and what kind of long tail can be tolerated.</p></li>
+
+<li><p><strong>Find the biggest bottleneck</strong>. Look for where limited resources (e.g. CPU, memory, disk space, network bandwidth) are creating demand bottlenecks. A starving process in the system will quickly act as a bottleneck on your system. Profile where time is spent to discover application code that may have been written poorly or or processes that were configured sub-optimally. A very common mistake in application code is making more database queries then it needs to. The solution here is to reduce and optimize your database queries and add caching. By and large, the bottleneck for most web-based applications will be the database. As you clear away bottlenecks, you may find that eventually your biggest bottleneck will become how much load the database can handle. For nearly all our clients, we recommend a strategy where they power their database with increasingly bigger and better resourced machines. This strategy gets them very far, and in truth, a single-machine database will suffice for the vast majority of web applications. If your needs really do surpass the limit on how big and fast a database get on a single machine, you will have to resort to a distributed database. Avoid this for as long as possible. Increasing the complexity of your system will result in a very bitter future pill to swallow.</p></li>
+
+<li><p><strong>Consider both the software and hardware</strong>. In general, we tell our clients to add more hardware if they are looking for a small constant factor of improvement. If they need an order of magnitude improvement, we look to the software. A system that needs an order of magnitude performance improvement likely indicates that there are very bad database access patterns in the code or big-O algorithmic problems, two of the biggest performance culprits in the modern web software. Hardware is the right solution for a common class of cases since developer time is expensive and servers are cheap compared to developers. But if your code is needlessly resource-hungry in a big way, scaling hardware can be a bad idea and will mean paying for extra hardware needlessly. Good judgement is needed to know when it’s worth it to invest in optimizing performance and when to avoid scaling a bad system that isn’t working. In the end, well-designed software takes into account the scaling ability of hardware. It’s not at all surprising that software and hardware work best when they work together.</p></li>
+
+<li><p><strong>Do the math</strong>. Because server resources will always act as a limit on your system, understanding the unit economics of your resource consumption can be helpful. Do you know how much RAM/CPU is needed to process per some unit of user requests? If you already have data on how many servers were handling peak user numbers before your servers started to fall over, take that data and do the math to estimate your resource consumption numbers (e.g. how much RAM/CPU usage needed per some unit of users). If you don’t have that as a data source, seek out data in however way you can. Even something as crude as SSH-ing into your machines and using <code>htop</code> to watch a single machine&rsquo;s performance as you hit it increasing amounts of load can serve as a good starting point. Use your estimate to calculate a sufficient size of server and how many servers you need. Multiply by cost of server to get an estimated system operational cost per unit of time and user. Also, measure how much database disk space is taken up for each unit of users to calculate space per unit of users. If you don&rsquo;t have data or know beforehand the number of users that will need to be served, use whatever information you do have to make reasonable assumptions and come up with a plan of action if those assumptions turn out to be wrong. Remember to buffer, and if you can, cross-verify your estimates from different data sources where possible (from tools like APM software, from your cloud host provider, etc).</p></li>
+
+<li><p><strong>Always test</strong>. Software systems are frequently complex enough that coming up with answers is hard without testing end-to-end. How much can my new system now take? Sometimes, you won&rsquo;t know until you have hit the failure limit. If possible, try to simulate the load you want to handle. If you cannot because it is too expensive or difficult, then you have to extrapolate from smaller, less expensive, easier-to-perform tests. Create a workload that would be representative of your expected load and run it. Remember to set up monitoring beforehand so that you can collect data and identify the key performance bottlenecks. Make estimates off that data. The more and better data you have to base your estimates off of, the more confidence you can have in your estimate. In addition to the representative workload test, another test to run is the worst-case scenario in order to figure out your upper ceiling. To do this, find your most expensive set of actions in the system and then create an entry point that takes those actions. One crude but simple approach can be creating a temporary, protected &ldquo;load testing&rdquo; endpoint that you&rsquo;ve configured to perform your most expensive and/or common operations (frequently, involving some expensive interaction with the database) and then using code or a tool to make a ton of concurrent requests to hit that specific endpoint as you watch and measure your system. Crude can be effective enough. However you do it, test, and test as closely as cost-effectively possible to your real-world scenario. If you cannot test the entire system end-to-end, test each system component. If you cannot do that, stress test just your bottlenecks&ndash;if you understand where your application bottlenecks will most likely be and you stress test those places, you&rsquo;ll obtain a fair picture of what overall load the system can handle.</p></li>
+
+<li><p><strong>Iterate</strong>. Is it fast enough? Is it memory-efficient enough? If not, figure out why. Employ the scientific method and model the problem mathematically. Iterate until satisfied.</p></li>
+</ol>
+
+<h5 id="conclusion">Conclusion</h5>
+
+<p>Getting a good understanding of your system&rsquo;s scalability requires methodical experimentation. Knowing which changes to make from there takes some expertise. Taking these above steps will set you on the right path, but prior experience can help a great deal. If you are looking to hire software experts who have the experience to help you make the right calls, <a href="mailto:info@zagaran.com">you can reach out to my team</a>. We serve as those experts for dozens of groups, and we&rsquo;d be happy to serve as those experts for you as well.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+
+        
+
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+        
+        <script src="https://kyfantaz.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://kyfantaz.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://kyfantaz.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

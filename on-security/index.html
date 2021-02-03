@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>On Security &middot; Kevin Fan</title>
+        <meta name="description" content="Security is hard.
+Security is one of the most difficult system properties to guarantee. In a sense, you can&rsquo;t guarantee it, in such as there is no such thing as a system that is totally 100% secure. Instead, security becomes a matter cost-effectively increasing the cost of attacking your system to the point that the potential prize no longer becomes worth it.
+Even when your software system is in a 100-feet underground facility, off-network, with a dedicated power source, and encased in lead, one can come up with possible threats.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="On Security">
+<meta property="og:description" content="Security is hard.
+Security is one of the most difficult system properties to guarantee. In a sense, you can&rsquo;t guarantee it, in such as there is no such thing as a system that is totally 100% secure. Instead, security becomes a matter cost-effectively increasing the cost of attacking your system to the point that the potential prize no longer becomes worth it.
+Even when your software system is in a 100-feet underground facility, off-network, with a dedicated power source, and encased in lead, one can come up with possible threats.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyfantaz.github.io/on-security/">
+        <link rel="stylesheet" href="https://kyfantaz.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-151561336-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                        <h1 class="site-title">
+                            <a title="Home" href="https://kyfantaz.github.io/">Home</a>
+                        </h1>
+                        
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/kyfantaz" rel="me">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/kevinfan/" rel="me">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:kfan@zagaran.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="More" href="/more/">More</a>
+    </li>
+
+                    </div>
+                    
+                </div>
+            </header>
+            <br>
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">On Security</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-11-04" itemprop="datePublished">Mon, Nov 4, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Kevin Fan</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Reading time: 5 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p><strong>Security is hard</strong>.</p>
+
+<p>Security is one of the most difficult system properties to guarantee. In a sense, you can&rsquo;t guarantee it, in such as there is no such thing as a system that is totally 100% secure. Instead, security becomes a matter cost-effectively increasing the cost of attacking your system to the point that the potential prize no longer becomes worth it.</p>
+
+<p>Even when your software system is in a 100-feet underground facility, off-network, with a dedicated power source, and encased in lead, one can come up with possible threats. And an attacker will only need one vulnerability to compromise your system. As a result, a system is only as strong as its weakest link. If your system has an administrator backdoor, your system is only as secure as that backdoor. If all data passes through a server, your data is only as secure as that security on that server&rsquo;s access.</p>
+
+<p>As a system architect, you have great incentive to reduce your attack surface as much as possible and increase the cost of attack wherever possible. However, at some point, it becomes prohibitively expensive to protect against a long tail of small probability events. Do we ever need to think about protecting against random bit flips caused by cosmic rays from space? No&hellip;unless of course, our software is destined for outer space&ndash;in which case then yes, we&rsquo;ll need error correction algorithms to counter this real physical phenomenon.</p>
+
+<p>Many smart people have thought about security and have come up with a collective set of best security practices and principles. <a href="http://zagaran.com/">My team</a> has been successful building our systems over the years in heeding those principles. To summarize those principles and practices, here is a partial run through of our hit list when evaluating a system from security perspective:</p>
+
+<ul>
+<li><p>Use vetted tooling. Do not rebuild the wheel, especially what can impact security.</p></li>
+
+<li><p>Never trust input. From either users or other external systems. Always escape input and validate it.</p></li>
+
+<li><p>Security and correctness go hand in hand. Protect against system drift and protect against deploying incorrect code. Incorrect code can lead to security being compromised.</p></li>
+
+<li><p>Use end-to-end encryption. Encrypt data over the wire and at rest. Examine every leg of your data communication and storage. Use HTTPS, and redirect HTTP to HTTPS, but be mindful that SSL is, well, <a href="https://heartbleed.com/">only as good</a> as SSL.</p></li>
+
+<li><p>Never commit secrets, private keys, or passwords to git repositories. These should always be configuration that is only stored on the server or deployment system. If they are accidentally exposed, they should be considered compromised and rotated immediately.</p></li>
+
+<li><p>Salt and use a slow hashing function to hash passwords and any other data that only needs comparison and not retrieval (e.g. SSNs).</p></li>
+
+<li><p>Validate everything you want to validate on the backend, too. Never rely on just frontend/client validation.</p></li>
+
+<li><p>Run a test to dynamically go through all your URLs to check for authentication decorators (with explicitly listed exceptions)</p></li>
+
+<li><p>Barring accessibility requirements, use CAPTCHA or an alternative after a number of failed login/create account attempts from an IP address within a time window to prevent brute force attacks. Keep in mind that CAPTCHA has its weaknesses.</p></li>
+
+<li><p>Don&rsquo;t allow your website to be embedded in an iframe by default to avoid clickjacking. Exempt only the pages for which this is needed functionality.</p></li>
+
+<li><p>Monitor errors and logs. Setup error reporting and system monitoring (e.g. Sentry, UptimeRobot).</p></li>
+
+<li><p>Block IP addresses that are making bad requests to your site. For example, temporarily block IP addresses with too many failed logins.</p></li>
+
+<li><p>Make sure your database only has its firewall open to the application and worker servers that need to access it.</p></li>
+
+<li><p>If using a load balancer, make sure the application servers are only open to the load balancer.</p></li>
+
+<li><p>Use large-bit (2048 or 4096 bit) RSA keys for SSH access to servers instead of passwords, if not using something like AWS SSM.</p></li>
+
+<li><p>Only open your system to the minimally needed. Ports that don&rsquo;t need to be open should be closed by default. Only open them when necessary and only to the necessary IP addresses, and close them when they are no longer needed.</p></li>
+
+<li><p>Update your system packages and system version as security updates are released and versions fall out of support. Test for system correctness.</p></li>
+
+<li><p>Update your libraries and frameworks as bug fixes are released and versions fall out of support. Test for system correctness.</p></li>
+
+<li><p>Reduce your attack surface area. Remove or disable unused or insecure software, such as older versions of SSL/TLS, unused HTTP methods, etc.</p></li>
+
+<li><p>For systems with session cookies, cryptographically sign your session cookie.</p></li>
+
+<li><p>If not all subdomains are trusted content, sign and check signatures on CSRF cookies to protect against the possibility of a CSRF attack from a subdomain.</p></li>
+
+<li><p>For HTTP interfaces, make sure data modifications only happen through POST/PUT/DELETE operations and keep in mind that CSRF protection does not apply to GET requests.</p></li>
+
+<li><p>Think of the physical security of your system. Here at Zagaran, we typically offload this burden to cloud providers that detail their physical security <a href="https://d0.awsstatic.com/whitepapers/aws-security-whitepaper.pdf">commitments</a>.</p></li>
+
+<li><p>Prior to launch and at other critical junctures, conduct penetration testing. For web systems, test against the OWASP checklist and run automated tools to check your deployment as a first pass on vulnerabilities:</p>
+
+<ul>
+<li><a href="https://observatory.mozilla.org/">https://observatory.mozilla.org/</a></li>
+<li><a href="https://www.ssllabs.com/">https://www.ssllabs.com/</a></li>
+</ul></li>
+</ul>
+
+<p>And the list goes on. With so many diverse aspects to cover, a canonical checklist to run through can help a great deal. Careful, methodical application of best practices, meticulous attention to detail, and your ability to add additional layers of <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">Swiss cheese</a> are your foremost allies in this war.</p>
+
+<p>If you are looking to build secure software or get your software system&rsquo;s security vetted, <a href="mailto:info@zagaran.com">you can reach out to my team</a>. We serve as software experts for dozens of groups, and we&rsquo;d be happy to serve as those experts for you as well.</p>
+
+<!-- For web systems, follow the OWASP guidelines.
+Think about physical security. At Zagaran, we typically offload this work to AWS data centers. https://d0.awsstatic.com/whitepapers/aws-security-whitepaper.pdf
+A typical good web system architecture ha
+Disable insecure versions of SSL/TLS on the machine that terminates TLS (usually the load balancer). https://www.ssllabs.com/ is a good way to check this
+Add outbound security rules to your servers restricting traffic to HTTP/HTTPS for web servers and the load balancer, and to your database port for database servers. -->
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+
+        
+
+        
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+        
+        <script src="https://kyfantaz.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://kyfantaz.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://kyfantaz.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

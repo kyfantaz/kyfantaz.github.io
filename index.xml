@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>the code less traveled</title>
+    <link>https://kyfantaz.github.io/</link>
+    <description>Recent content on the code less traveled</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Kevin Fan</copyright>
+    <lastBuildDate>Sun, 22 Nov 2020 12:30:45 -0500</lastBuildDate>
+    
+	<atom:link href="https://kyfantaz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>15 Dictums</title>
+      <link>https://kyfantaz.github.io/15-dictums/</link>
+      <pubDate>Sun, 22 Nov 2020 12:30:45 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/15-dictums/</guid>
+      <description>Adapted from advice I wrote back in May 2016
+Here are my Top 15 dictums for a new developer:
+ Do what you most dread doing first. Do the hardest thing first. Address the elephant in the room. Tackle the biggest source of ambiguity and uncertainty first. It will make the subsequent engineering planning easier and less stressful. Divide and conquer. Break up the work into smaller, modular chunks for incremental development.</description>
+    </item>
+    
+    <item>
+      <title>Best Software Practices</title>
+      <link>https://kyfantaz.github.io/best-practices/</link>
+      <pubDate>Thu, 16 Jan 2020 23:53:01 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/best-practices/</guid>
+      <description>Today, I&amp;rsquo;d like to share a few excerpts of this excellent paper, titled &amp;ldquo;Best Practices for Scientific Computing&amp;rdquo; by Wilson et al.
+ &amp;ldquo;Programmers are most productive when they work in small steps with frequent feedback and course correction rather than trying to plan months or years of work in advance. While the details vary from team to team, these developers typically work in steps that are sized to be about an hour long, and these steps are often grouped in iterations that last roughly one week.</description>
+    </item>
+    
+    <item>
+      <title>On Security</title>
+      <link>https://kyfantaz.github.io/on-security/</link>
+      <pubDate>Mon, 04 Nov 2019 18:59:28 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/on-security/</guid>
+      <description>Security is hard.
+Security is one of the most difficult system properties to guarantee. In a sense, you can&amp;rsquo;t guarantee it, in such as there is no such thing as a system that is totally 100% secure. Instead, security becomes a matter cost-effectively increasing the cost of attacking your system to the point that the potential prize no longer becomes worth it.
+Even when your software system is in a 100-feet underground facility, off-network, with a dedicated power source, and encased in lead, one can come up with possible threats.</description>
+    </item>
+    
+    <item>
+      <title>Steps To Scalability</title>
+      <link>https://kyfantaz.github.io/steps-to-scalability/</link>
+      <pubDate>Sun, 03 Nov 2019 15:39:53 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/steps-to-scalability/</guid>
+      <description>How do I increase the scalability of my system?
+Before we tackle that question, we must first ask: what do we mean by scalability, and how exactly are we measuring it? Are we confident that is the right metrics to care about? How do we correctly break that down into component sub-goals?
+For web-based systems, what we mean by scalability is often expressed the scale of possible usage—how many users your system can handle concurrently and correctly.</description>
+    </item>
+    
+    <item>
+      <title>Code As A Liability</title>
+      <link>https://kyfantaz.github.io/code-as-a-liability/</link>
+      <pubDate>Sat, 02 Nov 2019 18:54:26 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/code-as-a-liability/</guid>
+      <description>Code can often be a liability instead of an asset.
+This may seem like a strange and controversial statement. After all, clients literally hire me to write them code, and we devote so much of our time to writing code—how can code possibly be a liability?
+It’s good to remind ourselves that the code is not itself the end goal and has no value by itself. Instead, what we care about is the impact or value generated from executing that code, from automating away toil, saving time, enabling something previously not possible, etc.</description>
+    </item>
+    
+    <item>
+      <title>Beware New Technology</title>
+      <link>https://kyfantaz.github.io/beware-new-tech/</link>
+      <pubDate>Mon, 29 Oct 2018 18:17:23 -0500</pubDate>
+      
+      <guid>https://kyfantaz.github.io/beware-new-tech/</guid>
+      <description>The problem with technology is that it keeps changing. New tools come out. New frameworks. New languages. New technologies. Some of them are good, but most of them are not. As cost-effective developers, we want to be using the best of new technology to accomplish tasks that people want faster and better than before. How do we figure out which new technologies are worth learning and adopting?
+In my years of software development, I&amp;rsquo;ve found it extremely prudent to view the latest new shiny thing with skepticism.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kyfantaz.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyfantaz.github.io/about/</guid>
+      <description>About me Hello, world. I am a software developer, engineering manager, and consultant based in Boston. I co-lead a software development team called Zagaran Software that has built custom software for start-ups, Global 500 companies, universities, hospitals, research labs, a computing center, and government agencies. Since our inception, my team has served the needs of the Greater Boston community and beyond, working closely with over 100 organizations. Learn more about my world-class software team at zagaran.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kyfantaz.github.io/more/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kyfantaz.github.io/more/</guid>
+      <description> Lessons from others  The days are long but the decades are short Paul Graham essays  Top Notnot Cities  Inventing on Principle Write 2005 Stanford commencement speech Reality has a surprising amount of detail Globalization  </description>
+    </item>
+    
+  </channel>
+</rss>
